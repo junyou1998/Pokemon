@@ -7,7 +7,7 @@ const App = {
         const basePokeApi = "https://pokeapi.co/api/v2/pokemon/"
         const pokeDictApi = "https://raw.githubusercontent.com/junyou1998/Pokemon/main/api/PokeApi.json"
 
-        onMounted(() => {
+        const genPoke = ()=>{
             axios.get(pokeDictApi).then((res) => {
                 pokeDict = res.data;
                 axios.get(basePokeApi+getRand()).then((res2) => {
@@ -19,9 +19,12 @@ const App = {
                     
                 });
             });
+        }
+        onMounted(() => {
+            genPoke()
         });
 
-        return { poke };
+        return { poke, genPoke };
     },
 };
 
