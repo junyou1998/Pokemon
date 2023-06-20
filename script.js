@@ -24,9 +24,12 @@ const App = {
                 poke.name_en = pokeInfo.name;
                 const matchPoke = pokeDict.find((pokemon) => pokemon.name.en.toLowerCase() == pokeInfo.name);
                 poke.name_cn = matchPoke.name.zh;
-                poke.hp = pokeInfo.stats[0].base_stat;
-                poke.att = pokeInfo.stats[1].base_stat;
-                poke.def = pokeInfo.stats[2].base_stat;
+
+                const [hpInfo, attInfo, defInfo] = pokeInfo.stats;
+                poke.hp = hpInfo.base_stat;
+                poke.att = attInfo.base_stat;
+                poke.def = defInfo.base_stat;
+                
             } catch (error) {
                 console.log("get error");
             }
